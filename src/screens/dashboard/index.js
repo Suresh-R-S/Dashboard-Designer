@@ -27,7 +27,7 @@ export default class Dashboard extends Component {
     state = {
         layout: [],
         open: false,
-        modalData: defaultChartData,
+        modalData: cloneDeep(defaultChartData),
         openedChartIndex: 0,
     }
 
@@ -35,7 +35,7 @@ export default class Dashboard extends Component {
         const { open } = this.state;
         this.setState({
             open: !open,
-            modalData: itemData ? itemData : defaultChartData,
+            modalData: itemData ? cloneDeep(itemData) : cloneDeep(defaultChartData),
             openedChartIndex: !open ? index : 0
         });
     }
@@ -60,7 +60,7 @@ export default class Dashboard extends Component {
             h: 5,
             i: i.toString(),
             type,
-            data: defaultChartData
+            data: cloneDeep(defaultChartData)
         });
         this.setState({
             layout: newLayout
@@ -76,16 +76,12 @@ export default class Dashboard extends Component {
     }
 
     changeChartData = (data,index) => {
-        console.log('data', data);
-        console.log('index', index);
-        console.log('this.state.layout', this.state.layout);
         const layout = cloneDeep(this.state.layout);
-        layout[index].data = data;
-        this.setState({layout});
+        layout[index].data = cloneDeep(data);
+        this.setState({layout, open: false, modalData: cloneDeep(defaultChartData)});
     }
 
     render() {
-        console.log('this.state:::::::::::::', this.state);
         return (
             <Grid container>
                 <Grid container item spacing={24}>
@@ -109,7 +105,7 @@ export default class Dashboard extends Component {
                         open={this.state.open}
                         modalData={this.state.modalData}
                         chartIndex={this.state.openedChartIndex}
-                        onClose={this.toggleModal}
+                        onClose={() => this.toggleModal(0)}
                         saveData={this.changeChartData}
                     />
                 </Grid>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, isEqual} from 'lodash';
 import {Grid, Modal, TextField, Button} from '@material-ui/core';
 
 import './style.css';
@@ -7,20 +7,36 @@ import './style.css';
 export default class ChartData extends Component {
 
     state = {
-        data : this.props.modalData
+        data : cloneDeep(this.props.modalData)
     }
+
+    // shouldComponentUpdate = (newProps, newState) => {
+    //     return (
+    //         this.props.open !== newProps.open || 
+    //         !isEqual(this.state.data, newState.data)
+    //     );
+    // } 
+
+    // componentWillReceiveProps = (newProps) => {
+    //     if( !isEqual(this.props.modalData, newProps.modalData) ) {
+    //         console.log('newProps.modalData', newProps);
+    //         this.setState({
+    //             data : cloneDeep(newProps.modalData)
+    //         })
+    //     }
+    // }
 
     handleDataChange = (type, index, textVal) => {
         const data = cloneDeep(this.state.data);
         if (type === 'labels') {
             const labels = cloneDeep(data.labels);
             labels[index] = textVal;
-            data.labels = labels;
+            data.labels = cloneDeep(labels);
         }
         else {
             const value = cloneDeep(data.datasets[0].data);
             value[index] = parseInt(textVal);
-            data.datasets[0].data = value;
+            data.datasets[0].data = cloneDeep(value);
         }
         this.setState({
             data
@@ -28,6 +44,7 @@ export default class ChartData extends Component {
     }
 
     renderTextFields = () => {
+        if( !this.state.data.labels ) return null;
         return(
             this.state.data.labels.map( (i, index) => (
                 <Grid container item xs={12} spacing={16}>
