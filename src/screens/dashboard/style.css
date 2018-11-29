@@ -4,11 +4,42 @@
 
 .widgets-container{
     background: whitesmoke;
+    display: flex;
+}
+
+.widgets-options{
+  display: flex;
+  flex: 1;
+}
+
+.widgets-options > h4{
+  padding-right: 20px;
 }
 
 .widget-options{
   text-align: center;
   cursor: pointer;
+}
+
+.chart-name-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.chart-name{
+  font-size: 10px;
+}
+
+.edit-button-container{
+  display: none;
+}
+
+.chart-container:hover > .edit-button-container{
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .react-grid-layout {
