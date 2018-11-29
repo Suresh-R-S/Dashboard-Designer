@@ -1,0 +1,48 @@
+.modal {
+    display: flex;
+    overflow: auto;
+}
+
+.container {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    /* max-height: 700px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    width: 50%;
+    padding: 10px;
+}
+
+.close-modal-container {
+    text-align: right;
+}
+
+.MuiGrid-item-2 > .color-picker-container {
+    margin-bottom: 20px;
+}
+
+.MuiGrid-item-2 > .action-button-container {
+    padding-left: 70px;
+    padding-top: 30px;
+}
+
+.MuiGrid-item-2 > .checkbox-container {
+    margin-top: 30px;
+}
+
+.MuiGrid-container-1 > .button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button-container > Button {
+    margin-right: 10px;
+}
+
+.action-button-container > Button {
+    margin-right: 10px;
+}
