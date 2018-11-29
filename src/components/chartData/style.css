@@ -7,7 +7,6 @@
     position: absolute;
     top: 10%;
     left: 25%;
-    /* max-height: 700px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,21 +19,21 @@
     text-align: right;
 }
 
-.MuiGrid-item-2 > .color-picker-container {
-    margin-bottom: 20px;
+.color-picker-container {
+    margin-bottom: 20px!important;
 }
 
-.MuiGrid-item-2 > .action-button-container {
-    padding-left: 70px;
-    padding-top: 30px;
+.action-button-container {
+    padding-left: 70px!important;
+    padding-top: 30px!important;
 }
 
-.MuiGrid-item-2 > .checkbox-container {
-    margin-top: 30px;
+.checkbox-container {
+    margin-top: 30px!important;
 }
 
-.MuiGrid-container-1 > .button-container{
-    display: flex;
+.button-container{
+    display: flex!important;
     justify-content: center;
     margin-top: 10px;
 }
