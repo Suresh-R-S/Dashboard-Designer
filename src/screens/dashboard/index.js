@@ -64,11 +64,10 @@ export default class Dashboard extends Component {
     generateLayout = (type) => {
         const { layout } = this.state;
         const newLayout = [ ...layout ];
-        const y = Math.ceil(Math.random() * 3) + 1;
         const i = newLayout.length;
         newLayout.push({
             x: (i * 2) % 6,
-            y: Math.floor(i / 6) * y,
+            y: Math.floor(i/3),
             w: 2,
             h: 5,
             i: i.toString(),
