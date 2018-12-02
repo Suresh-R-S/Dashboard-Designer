@@ -6,8 +6,6 @@ export default class BarChart extends Component {
         return (
             <Bar
                 data={this.props.data}
-                width={100}
-                height={50}
                 options={{
                     maintainAspectRatio: false
                 }}

@@ -64,11 +64,10 @@ export default class Dashboard extends Component {
     generateLayout = (type) => {
         const { layout } = this.state;
         const newLayout = [ ...layout ];
-        const y = Math.ceil(Math.random() * 4) + 1;
         const i = newLayout.length;
         newLayout.push({
             x: (i * 2) % 6,
-            y: Math.floor(i / 3) * y,
+            y: Math.floor(i/3),
             w: 2,
             h: 5,
             i: i.toString(),
@@ -83,9 +82,11 @@ export default class Dashboard extends Component {
     
     onLayoutChange = (newLayout) => {
         const layout = cloneDeep(this.state.layout);
-        newLayout.forEach( item => {
-            layout.x = item.x;
-            layout.y = item.y;
+        newLayout.forEach( (item, index) => {
+            layout[index].x = item.x;
+            layout[index].y = item.y;
+            layout[index].w = item.w;
+            layout[index].h = item.h;
         } )
         this.setState({layout});
     }
@@ -158,6 +159,7 @@ export default class Dashboard extends Component {
                         className="layout"
                         rowHeight={30}
                         cols={6}
+                        compactType={null}
                     >
                         {this.generateDOM()}
                     </ReactGridLayout>
